@@ -17,15 +17,25 @@
     "@types/express": "^5.0.6",
     "@types/http-proxy": "^1.17.17",
     "@types/node": "^25.5.0",
+    "@types/uuid": "^10.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/auto-instrumentations-node": "^0.72.0",
+    "@opentelemetry/exporter-metrics-otlp-http": "^0.214.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.214.0",
+    "@opentelemetry/instrumentation-express": "^0.62.0",
+    "@opentelemetry/instrumentation-http": "^0.214.0",
+    "@opentelemetry/sdk-metrics": "^2.6.1",
     "@opentelemetry/sdk-node": "^0.214.0",
+    "@opentelemetry/sdk-trace-base": "^2.6.1",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.3.1",
     "http-proxy": "^1.18.1",
     "lru-cache": "^11.2.7",
-    "p-limit": "^7.3.0"
+    "p-limit": "^7.3.0",
+    "uuid": "^13.0.0"
   }
 }

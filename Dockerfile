@@ -1,13 +1,12 @@
-services:
-  app:
-    build: .
-    ports:
-      - "5000:5000"
+FROM node:20-alpine
 
-  sidecar:
-    build: .
-    command: node dist/proxy.js
-    ports:
-      - "3000:3000"
-    depends_on:
-      - app
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY dist/ ./dist/
+
+EXPOSE 3000
+
+CMD ["node", "dist/index.js"]
