@@ -18,7 +18,7 @@ app.listen(3000, () => {
 
 function getTraceHeader(req: IncomingMessage){
     return{
-        traceparant:req.headers["traceparent"] || generateTraceparent(),
+        traceparent: req.headers["traceparent"] || generateTraceparent(),
     }
 }
 
@@ -89,12 +89,12 @@ setInterval(() => {
 proxy.on("error", (err: Error, req: IncomingMessage, res: any) => {
   metrics.failures++;
 
+  if (metrics.failures > 50) {
+    maxConcurrent = 5;
+  }
+
   if (!res.headersSent) {
     res.writeHead(502);
   }
   res.end("Bad Gateway");
 });
-
-if (metrics.failures > 50) {
-  maxConcurrent = 5; // aggressive throttle
-}
